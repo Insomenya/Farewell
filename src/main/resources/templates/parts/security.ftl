@@ -11,7 +11,7 @@
         <#assign operator = user.operator>
     </#if>
     <#if isCustomer>
-        <#assign operator = user.customer>
+        <#assign customer = user.customer>
     </#if>
 <#else>
     <#assign

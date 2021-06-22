@@ -45,12 +45,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, double price, Short state, String description, String image, Category category, Operator addedBy) {
+    public Product(String name, double price, Short state, String description, Category category, Operator addedBy) {
         this.name = name;
         this.price = price;
         this.state = state;
         this.description = description;
-        this.image = image;
         this.category = category;
         this.addedBy = addedBy;
     }

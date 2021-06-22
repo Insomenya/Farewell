@@ -1,13 +1,13 @@
 
 package com.example.farewell.service;
 
-import com.example.farewell.domain.CustomUserDetails;
-import com.example.farewell.domain.Customer;
-import com.example.farewell.domain.Operator;
+import com.example.farewell.domain.*;
 import com.example.farewell.repository.CustomerRepo;
 import com.example.farewell.repository.OperatorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -79,14 +79,6 @@ public class CustomDetailsService implements UserDetailsService {
         newOperator.setFullName(fullName);
         operatorRepo.save(newOperator);
         return true;
-    }
-
-    public Map<String, String> getErrors(BindingResult bindingResult) {
-        Collector<FieldError, ?, Map<String, String>> collector = Collectors.toMap(
-                fieldError -> fieldError.getField() + "Error",
-                FieldError::getDefaultMessage
-        );
-        return bindingResult.getFieldErrors().stream().collect(collector);
     }
 }
 

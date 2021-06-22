@@ -1,6 +1,7 @@
 package com.example.farewell.domain;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.Transient;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotBlank;
@@ -9,9 +10,9 @@ import java.util.Collection;
 import java.util.List;
 
 public class CustomUserDetails implements UserDetails {
-    @NotBlank(message = "Username is empty.")
+    @NotBlank(message = "Логин не указан.")
     private String username;
-    @NotBlank(message = "Password is empty.")
+    @NotBlank(message = "Пароль не указан.")
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
     private Customer customer;
@@ -103,10 +104,10 @@ public class CustomUserDetails implements UserDetails {
     }
 
     public boolean isOperator(){
-        return getAuthorities().contains(Role.OPERATOR);
+        return getAuthorities().contains(Role.ROLE_OPERATOR);
     }
 
     public boolean isCustomer(){
-        return getAuthorities().contains(Role.CUSTOMER);
+        return getAuthorities().contains(Role.ROLE_CUSTOMER);
     }
 }

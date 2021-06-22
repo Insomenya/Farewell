@@ -1,0 +1,29 @@
+#navbar{
+    background-color: #f6bd60 !important;
+    color: white !important;
+}
+
+.card-header{
+    background-color: #f7ede2 !important;
+}
+
+.alert-danger{
+    background-color: #f5cac3 !important;
+}
+
+.nav {
+    text-transform: capitalize !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.navbar-brand{
+    font-weight: bold !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.image-container{
+    width: 200px !important;
+    height: 200px !important;
+}
+

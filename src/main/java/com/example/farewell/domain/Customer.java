@@ -15,7 +15,8 @@ public class Customer {
     @Column(
             name = "phone_num",
             nullable = false,
-            length = 15
+            length = 15,
+            unique = true
     )
     private String phoneNum;
     @Column(columnDefinition = "float8 default 0")
@@ -29,8 +30,8 @@ public class Customer {
             cascade = {CascadeType.MERGE, CascadeType.PERSIST}
     )
     private Collection<Order> orders;
-    @Transient
-    private Order currentOrder;
+    /*@Transient
+    private Order currentOrder;*/
 
     public Customer() {
     }
@@ -91,13 +92,13 @@ public class Customer {
         this.personalDiscount = personalDiscount;
     }
 
-    public Role getRole() { return Role.CUSTOMER; }
+    public Role getRole() { return Role.ROLE_CUSTOMER; }
 
-    public Order getCurrentOrder() {
+    /*public Order getCurrentOrder() {
         return currentOrder;
     }
 
     public void setCurrentOrder(Order currentOrder) {
         this.currentOrder = currentOrder;
-    }
+    }*/
 }

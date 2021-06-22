@@ -12,7 +12,10 @@ public class Operator {
     @Column(name = "full_name")
     private String fullName;
     @NotBlank(message = "Login left blank.")
-    @Column(nullable = false)
+    @Column(
+            nullable = false,
+            unique = true
+    )
     private String login;
     @NotBlank(message = "Password left blank.")
     @Column(nullable = false)
@@ -72,6 +75,6 @@ public class Operator {
     }
 
     public Role getRole() {
-        return Role.OPERATOR;
+        return Role.ROLE_OPERATOR;
     }
 }

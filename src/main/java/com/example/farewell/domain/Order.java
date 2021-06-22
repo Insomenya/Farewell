@@ -11,6 +11,7 @@ public class Order {
     @GeneratedValue
     private Long id;
     private short status;
+    private double total;
     @Column(name = "order_date")
     private LocalDate date;
     @ManyToOne(fetch = FetchType.EAGER)
@@ -36,7 +37,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(short status, LocalDate date, Customer customer, Operator processedBy) {
+    public Order(short status, LocalDate date, Customer customer) {
         this.status = status;
         this.date = date;
         this.customer = customer;
@@ -89,5 +90,13 @@ public class Order {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getTotal() {
+        return total;
     }
 }

@@ -2,7 +2,7 @@
 <#import  "parts/auth.ftl" as l>
 
 <@c.page "Вход | farewell">
-    <h1>Форма входа</h1>
+    <div class="container w-75"><h1 class="text-center">Форма входа</h1></div>
     <#if Session?? && RequestParameters.error??>
         <div class="alert alert-danger" role="alert">
             ${Session.SPRING_SECURITY_LAST_EXCEPTION.message}

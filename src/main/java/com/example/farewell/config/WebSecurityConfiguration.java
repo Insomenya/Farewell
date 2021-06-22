@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,21 +30,30 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/register", "/static/**", "/css/**", "/js/**", "/images/**", "/operator/registerOperator").permitAll()
+                    .antMatchers("/", "/register", "/static/**", "/error/**", "/uimg/**").permitAll()
                     .anyRequest().authenticated()
-                    .and()
-                .formLogin()
+                .and()
+                    .formLogin()
                     .loginPage("/login").permitAll()
                     .failureUrl("/login?error=1")
-                    .and()
-                .logout()
-                    .permitAll()
+                .and()
+                    .rememberMe()
+                .and()
+                    .logout()
+                    .logoutUrl("/logout").permitAll()
                     .logoutSuccessUrl("/");
+        http.csrf().ignoringAntMatchers("/rest/**");
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customDetailsService)
         .passwordEncoder(passwordEncoder);
+    }
+
+    @Override
+    public void configure(WebSecurity webSecurity) throws Exception {
+        webSecurity
+                .ignoring().antMatchers("/rest/**");
     }
 }

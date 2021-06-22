@@ -2,6 +2,7 @@ package com.example.farewell;
 
 import com.example.farewell.domain.*;
 import com.example.farewell.repository.*;
+import com.example.farewell.service.CustomDetailsService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,23 +31,17 @@ class FarewellApplicationTests {
 		Category category = new Category("смартфоны");
 		categoryRepo.save(category);
 
-		Customer newCustomer = new Customer();
-		newCustomer.setFullName("алексей");
-		newCustomer.setPhoneNum("797898");
-		newCustomer.setPersonalDiscount(0.0d);
-		newCustomer.setPassword("sdfhjsl");
-		customerRepo.save(newCustomer);
 
-		Operator operator = new Operator("Denis", "login", "sdfsdsdf");
+
+		Operator operator = new Operator("full operator name ", "login", "$2a$08$3FCpRPupaHFIk5EOAUb.Ie0cK4emkKvtgK0favWee5y0W7ONI0.2i");
 		operatorRepo.save(operator);
 
-
-		Product product1 = new Product("honor 9", 16000.0d, (short)3, "lsfdsdsfsdfd", "path to image", category, operator);
-		Product product2 = new Product("galaxy a2", 13000.0d, (short)2, "lsfhhhhhhhhsdfd", "path to image", category, operator);
+		Product product1 = new Product("honor 9", 16000.0d, (short)3, "product description1", category, operator);
+		Product product2 = new Product("galaxy a2", 13000.0d, (short)2, "product description2", category, operator);
 		productRepo.save(product1);
 		productRepo.save(product2);
 
-		Order order = new Order();
+		/*Order order = new Order();
 		order.setCustomer(newCustomer);
 		order.setProcessedBy(operator);
 		order.setDate(LocalDate.now());
@@ -55,7 +50,7 @@ class FarewellApplicationTests {
 		products.add(product1);
 		products.add(product2);
 		order.setProducts(products);
-		orderRepo.save(order);
+		orderRepo.save(order);*/
 	}
 
 }
