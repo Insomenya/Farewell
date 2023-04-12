@@ -1,2 +1,2 @@
 # Farewell
- Simple web-application for managing a store made with Spring-boot (uni project)
+A simple online-store project made with Spring Framework.
